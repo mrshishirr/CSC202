@@ -61,7 +61,21 @@ public class MyMazeNode <T> {
 	 * @return the val
 	 */
 	public T getVal() {
+		if ((val instanceof Character) || (val instanceof String))
+			getStringVal();
 		return val;
+	}
+	/**
+	 * @return the val
+	 */
+	public String getStringVal() {
+		String s = null;
+		
+		if (val instanceof Character) 
+			 s =  s.valueOf(val);
+		else s = (String) val;
+		
+		return s;
 	}
 	/**
 	 * @param val the val to set

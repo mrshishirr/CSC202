@@ -110,6 +110,7 @@ public class TestMyMaze extends JFrame implements ActionListener {
 		BufferedReader infile = null;
 		String inLine;
 		jta1.setText(null);
+		jta2.setText(null);
 		
 		try {
 			// Read from the file
@@ -120,6 +121,7 @@ public class TestMyMaze extends JFrame implements ActionListener {
 				
 			}
 			insertMazeNode(jta1.getText());
+			jta2.append(searchStartNode());
 			// TODO create a linkedstack where we have to search things
 			
 		}
@@ -149,7 +151,7 @@ public class TestMyMaze extends JFrame implements ActionListener {
 			else {
 				maze = new MyMazeNode<Character> (r, c, text.charAt(i));
 				// Testing proper MyMazeNode reading
-				//jta2.append(maze.toString());
+//				jta2.append(maze.toString());
 				
 				sls.push(maze);
 				
@@ -160,28 +162,32 @@ public class TestMyMaze extends JFrame implements ActionListener {
 			}
 		}
 		// Testing proper stack insert
-		//jta2.append(sls.toString());
+//		jta2.append(sls.toString());
 	}
 	
-	public int searchStartNode(){
-		 return sls.search('S');
+	public String searchStartNode(){
+		 int startPt =  sls.search('*');
+//		 System.out.println(startPt);
+		 MyMazeNode<?> startNode = sls.locator(startPt);
+		 return startNode.getLocation();
 	
 	}
 	
-	public void findPath() {
-		//left-right-up-down lookup
-		
-		//check left side
-		//check for wall
-		if (getCol() != 0) {
-			if (getVal() == ) {
-				if (getL() == 1)
-					setL(1);
-			}
-		}
-		
-	}
-	}
-	
-
+//	public void findPath() {
+//		
+//		SearchableLinkedStack< MyMazeNode<Character> > slshelper = new SearchableLinkedStack< MyMazeNode<Character> >();
+//		//left-right-up-down lookup
+//		
+//		
+//		//check left side
+//		//check for wall
+//		if (getCol() != 0) {
+//			if (getVal() == -1) {
+//				if (getL() == 1)
+//					setL(1);
+//			}
+//		}
+//		
+//	}
 }
+
