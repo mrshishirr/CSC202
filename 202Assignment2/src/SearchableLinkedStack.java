@@ -8,61 +8,6 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 		current = super.top;
 	}
 
-	// public int search(T info) {
-	//
-	// int index = 0;
-	// if (!super.isEmpty()) {
-	// while (!super.isEmpty()) {
-	// index++;
-	// temp.push(super.top());
-	// if (super.top().equals(info)) {
-	// while (!this.isEmpty()) {
-	// super.push(temp.top());
-	// temp.pop();
-	// }
-	// return index;
-	// } else
-	// super.pop();
-	// }
-	//
-	// // nothing found, so get back the old stack
-	// while (!temp.isEmpty()) {
-	// super.push(temp.top());
-	// temp.pop();
-	// }
-	// return -1;
-	// } else
-	// throw new StackUnderflowException("Search attempted on an empty stack.");
-	// }
-	//
-	// public int search(char ch) {
-	// int index = 0;
-	// if (!super.isEmpty()) {
-	// while (!super.isEmpty()) {
-	// index++;
-	// temp.push(super.top());
-	// if (super.top() instanceof MyMazeNode<?>) {
-	// if (((char) (((MyMazeNode<?>) super.top()).getVal())) == ch) {
-	// while (!this.isEmpty()) {
-	// super.push(temp.top());
-	// temp.pop();
-	// }
-	// return index;
-	// } else
-	// super.pop();
-	//
-	// }
-	// // nothing found, so get back the old stack
-	// while (!temp.isEmpty()) {
-	// super.push(temp.top());
-	// temp.pop();
-	// }
-	// }
-	// return -1;
-	// } else
-	// throw new StackUnderflowException("Search attempted on an empty stack.");
-	// }
-
 	public int search(T element) {
 		if (element instanceof Character)
 			return this.search((char) element);
@@ -85,7 +30,6 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 	}
 
 	public int search(char ch) {
-		reverse();
 		int index = -1;
 		current = super.top;
 		
@@ -96,9 +40,9 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 
 					MyMazeNode<?> m = (MyMazeNode<?>) current.getInfo();
 					if ( m.getVal()  instanceof Character) {
-						 System.out.println("val: " + m.getVal());
+//						 System.out.println("val: " + m.getVal());
 						if ((char) m.getVal() == ch) {
-							System.out.println("found at: " + m.getLocation());
+//							System.out.println("found at: " + m.getLocation());
 							return index;
 						}
 						else current = current.getLink();
@@ -109,7 +53,30 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 		}
 		else
 			throw new StackUnderflowException("Search attempted on an empty stack.");
-		return -1;
+		return index;
+		
+	}
+	
+	public int search(int row, int col) {
+		int index = -1;
+		current = super.top;
+		
+		if (current != null) {
+			while (current != null) {
+				index++;
+				if (current.getInfo() instanceof MyMazeNode<?>) {
+
+					MyMazeNode<?> m = (MyMazeNode<?>) current.getInfo();
+					if((m.getRow() == row) && (m.getCol() == col))
+							return index;
+					else current = current.getLink();
+							
+				}
+			}
+		}		
+		else
+			throw new StackUnderflowException("Search attempted on an empty stack.");
+		return index;
 		
 	}
 
@@ -146,8 +113,8 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 		
 		if (index < 0)
 			throw new StackUnderflowException("Index " + index + " lower than possible range!");
-		else if (index == 0)
-			throw new StackUnderflowException("Cannot locate node on an empty stack!");
+//		else if (index == 0)
+//			throw new StackUnderflowException("Cannot locate node on an empty stack!");
 		else if (index > this.length())
 			throw new StackOverflowException("Index " + index + " higher than actual range!");
 		else {
@@ -165,20 +132,16 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 
 	public String toString() {
 		String s = "";
-		String[] str = new String[this.length()];
 
 		current = super.top;
 		if (current != null) {
 			while (current != null) {
-				for (int i = str.length - 1; i >= 0; i--) {
-					str[i] = current.getInfo().toString();
+
+					s = s + current.getInfo().toString();
 					current = current.getLink();
 				}
-			}
-			for (int j = 0; j < str.length; j++) {
-				s = s + str[j];
-			}
 			return s;
+
 		} else
 			throw new StackUnderflowException("Stack empty. Nothing to print!");
 	}

@@ -3,23 +3,21 @@ public class MyMazeNode <T> {
 
 	private int row, col;
 	private T val;
-	private int l, r, u, d;
+	private T l, r, u, d;
 	
 	public MyMazeNode() {
 		setRow(-1); setCol(-1);
 		setVal(null);
-		setL(-1); setR(-1); setU(-1); setD(-1);
+		setL(null); setR(null); setU(null); setD(null);
 		
 	}
 	
-	public MyMazeNode(int r, int c, T v) {
+	public MyMazeNode(int r, int c, T v, T s) {
 		this();
 		setRow(r); setCol(c);
 		setVal(v);
-				
+		setL(s); setR(s); setU(s); setD(s);	
 	}
-	
-
 	
 	public String toString() {
 		String s1, s2, s3, s4;
@@ -66,7 +64,7 @@ public class MyMazeNode <T> {
 		return val;
 	}
 	/**
-	 * @return the val
+	 * @return the val in String
 	 */
 	public String getStringVal() {
 		String s = null;
@@ -86,49 +84,49 @@ public class MyMazeNode <T> {
 	/**
 	 * @return the l
 	 */
-	public int getL() {
+	public T getL() {
 		return l;
 	}
 	/**
 	 * @param l the l to set
 	 */
-	public void setL(int l) {
+	public void setL(T l) {
 		this.l = l;
 	}
 	/**
 	 * @return the r
 	 */
-	public int getR() {
+	public T getR() {
 		return r;
 	}
 	/**
 	 * @param r the r to set
 	 */
-	public void setR(int r) {
+	public void setR(T r) {
 		this.r = r;
 	}
 	/**
 	 * @return the u
 	 */
-	public int getU() {
+	public T getU() {
 		return u;
 	}
 	/**
 	 * @param u the u to set
 	 */
-	public void setU(int u) {
+	public void setU(T u) {
 		this.u = u;
 	}
 	/**
 	 * @return the d
 	 */
-	public int getD() {
+	public T getD() {
 		return d;
 	}
 	/**
 	 * @param d the d to set
 	 */
-	public void setD(int d) {
+	public void setD(T d) {
 		this.d = d;
 	}
 	
