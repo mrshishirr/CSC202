@@ -1,2 +1,20 @@
 /.classpath
-/src.zip
+.project
+.classpath
+.settings/
+
+*.class
+*.swp
+*.cache
+*~
+
+bin/
+target/
+build/
+gen/
+
+# tmp source folder
+tmp/
+
+# js plugin
+WebContent/js_plugin/lib/
