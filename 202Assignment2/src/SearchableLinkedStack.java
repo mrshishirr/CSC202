@@ -29,9 +29,20 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 	 * @return the index of the element if found, otherwise returns -1. Throws
 	 *         StackUnderflowException in case of empty stack.
 	 */
+	
 	public int search(T element) {
+		
+		/* the following statements are NOT allowed in command-line compiler
+		 * however, Eclipse didn't have issue compiling them
+		 */
+		
+//		if (element instanceof Character)
+//			return this.search((char) element);
+//		if (Character.class.isAssignableFrom(element.getClass()))
+//			return this.search((char) element);
+	
 		if (element instanceof Character)
-			return this.search((char) element);
+			return this.search(((Character) element).charValue()); // this seems ok for command-line compiler
 		else {
 			int index = -1;
 			current = super.top;
@@ -68,7 +79,9 @@ public class SearchableLinkedStack<T> extends LinkedStack<T> {
 
 					MyMazeNode<?> m = (MyMazeNode<?>) current.getInfo();
 					if (m.getVal() instanceof Character) {
-						if ((char) m.getVal() == ch) {
+//						if ((char) m.getVal() == ch) {			// NOT allowed in command-line compiler!
+//						if (m.getVal() == (Character) ch) {		// valid across compilers
+						if(((Character) m.getVal()).charValue() == ch) {
 							return index;
 						} else
 							current = current.getLink();
