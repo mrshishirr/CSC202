@@ -1,15 +1,17 @@
 
-/*
+/**
  * Created a new class to provide useful functionalities
  * for the LinkedStack class. This class provides -
- * 
- * 1. Search by the content
- * 2. Search by character if the content is a member of Character
- * 3. Search by node location
- * 4. Reverse the stack
- * 5. Determine length of the stack
- * 6. Locate position of a node by its index
- * 7. Print the stack (calls toString() of its content)
+ * <ul>
+ * <ol type="1">
+ * <li>Search by the content
+ * <li>Search by character if the content is a member of Character
+ * <li>Search by node location
+ * <li>Reverse the stack
+ * <li>Determine length of the stack
+ * <li>Locate position of a node by its index
+ * <li>Print the stack (calls toString() of its content)
+ * </ul>
  * 
  */
 
