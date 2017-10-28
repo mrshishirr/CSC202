@@ -1,2 +1,2 @@
-# schoolworks
-All my school projects will be here
+# CSC202
+All assignments done in CSC201
